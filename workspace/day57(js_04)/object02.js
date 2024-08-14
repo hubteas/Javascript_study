@@ -9,7 +9,6 @@ function User(id, pw, name, age, subject = "javascrip"){
   this.name = name;
   this.age = age;
   this.subject = subject;
-
 }
 
 user1 = new User("abc", "1234", "짱구", 5);
