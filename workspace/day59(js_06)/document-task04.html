@@ -1,0 +1,31 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습4</title>
+</head>
+<body>
+  <ul>
+    <li>항목 1</li>
+    <li>항목 2</li>
+    <li>항목 3</li>
+    <li>항목 4</li>
+  </ul>
+</body>
+<script>
+  // getElementsByTagName을 사용하여 모든 li요소 선택하기
+  const items = document.getElementsByTagName('li');
+  console.log(items);
+
+  HTMLCollection.prototype.forEach = Array.prototype.forEach;
+  // 선택된 모든 li요소에 list-item 클래스 추가
+  items.forEach(element => {
+    const addClass  = element.classList.add('list-item');
+  });
+  
+  // 마지막 li 요소의 배경색을 lightblue로 변경하기
+  items[items.length -1].style.backgroundColor='lightblue';
+
+</script>
+</html>

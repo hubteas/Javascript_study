@@ -1,0 +1,21 @@
+<!-- 1번 : DOM01 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>getElementByID</title>
+</head>
+<body>
+  <div id="myDiv">div 요소</div>
+  <p></p>
+</body>
+<script>
+  const myDiv = document.getElementById("myDiv");
+  const p1 = document.querySelector("p");
+  console.log(myDiv);
+  console.log(p1);
+  // p1.innerText = myDiv.textContent;
+  p1.innerHTML = myDiv.textContent;
+</script>
+</html>
