@@ -23,12 +23,12 @@ function onPageClick(event){
   showPage(currentPage);
 
   //페이지 네비게이션 업데이트 함수 호출
-
+  updatePagination(currentPage);
 }
 
+//페이지에 해당하는 게시물 표시함수
 function showPage(page){
   contentContainer.innerHTML = ''; //현재 표시된 게시물 초기화
-
   const startIdx = (page-1) * pageSize; //현재 페이지의 시작 인덱스 계산
   const endIdx = Math.min(startIdx + pageSize, totalItems); //현재 페이지 마지막 인덱스 계산
   //시작 인덱스부터 마지막 인덱스까지 반복하면서 게시물 생성 및 추가
@@ -37,3 +37,33 @@ function showPage(page){
     contentContainer.appendChild(post); //게시물 컨테이너 추가
   }
 }
+
+//페이지 네비게이션 업데이트 함수
+function updatePagination(currentPage){
+  //모든 페이지 번호에서 active 클래스 제거
+  paginationConatiner.querySelectorAll("li").forEach(item => {
+    item.classList.remove('active');
+  });
+
+  //현재 페이지 번호에 'active' 클래스 추가
+  paginationConatiner.querySelector(`li:nth-child(${currentPage})`).classList.add('active');
+}
+
+//페이지 번호 생성 및 이벤트 핸들러 추가
+for(let i = 1; i <= totalPages; i++){
+  const li = document.createElement("li"); //<li> 요소 생성
+  li.textContent = i; //페이지 번호 설정
+  
+  if(i === 1){
+    li.classList.add('active'); //첫페이지에 active 클래스 추가
+  }
+
+  li.addEventListener("click", onPageClick); //페이지 번호 클릭 이벤트 핸들러  추가
+  
+  pagination.appendChild(li); //페이지 번호를 <ul> 자식 요소로 <li>요소 추가
+}
+
+paginationConatiner.appendChild(pagination); //페이지 번호 <ul>요소를 페이지 네비게이션 컨테이너에 추가
+
+showPage(1); //초기에 첫페이지 표시
+
